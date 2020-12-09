@@ -68,28 +68,32 @@ class Actions:
     def exit(self):
         sys.exit(0)
 
-    def edit_name(self, name):
+    def edit_name(self):
+        name = input('Enter name of editing student: ')
         new_name = input('Enter new name: ')
         for num, val in enumerate(self.student_list):
             if name in val.get_name():
                 val.set_name(new_name)
         self.menu()
 
-    def edit_age(self, name):
+    def edit_age(self):
+        name = input('Enter name of editing student: ')
         new_age = input('Enter new age: ')
         for num, val in enumerate(self.student_list):
             if name in val.get_name():
                 val.set_age(new_age)
         self.menu()
 
-    def edit_sex(self, name):
+    def edit_sex(self):
+        name = input('Enter name of editing student: ')
         new_sex = input('Enter new sex: ')
         for num, val in enumerate(self.student_list):
             if name in val.get_name():
                 val.set_name(new_sex)
         self.menu()
 
-    def edit_phone(self, name):
+    def edit_phone(self):
+        name = input('Enter name of editing student: ')
         new_phone = input('Enter new phone: ')
         for num, val in enumerate(self.student_list):
             if name in val.get_name():
@@ -97,16 +101,15 @@ class Actions:
         self.menu()
 
     def editing(self):
-        name = input('Enter name of editing student: ')
         print("\nEditing menu:")
         print("1-Name\n2-Age\n3-Sex\n4-Phone\n5-Back to menu")
         choice = input("Choose action: ")
-        choice_menu = {'1': self.edit_name(name),
-                       '2': self.edit_age(name),
-                       '3': self.edit_sex(name),
-                       '4': self.edit_phone(name),
+        choice_menu = {'1': self.edit_name,
+                       '2': self.edit_age,
+                       '3': self.edit_sex,
+                       '4': self.edit_phone,
                        '5': self.menu}
-        if choice not in choice_menu.keys():
+        if choice not in choice_menu:
             print("Please enter correct number")
             self.editing()
         else:
